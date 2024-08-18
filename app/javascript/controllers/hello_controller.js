@@ -1,7 +1,9 @@
-import { Controller } from "@hotwired/stimulus"
-
-export default class extends Controller {
+import ApplicationController from "./application_controller"
+import { helloMixin } from "../mixins/hello";
+export default class extends ApplicationController {
   connect() {
-    this.element.textContent = "Hello World!"
+    helloMixin(this)
+    super.sayHi()
+    this.hello()
   }
 }
