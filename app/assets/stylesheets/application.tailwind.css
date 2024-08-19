@@ -2,12 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "OpenSans";
+    src: url('OpenSans/OpenSans-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+  }
+
+  @font-face {
+    font-family: "OpenSans";
+    src: url('OpenSans/OpenSans-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+  }
+
+  @font-face {
+    font-family: "OpenSans";
+    src: url('OpenSans/OpenSans-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+  }
 /*
 
 @layer components {
   .btn-primary {
     @apply py-2 px-4 bg-blue-200;
   }
-}
+  }
 
 */
+}
