@@ -6,6 +6,7 @@ ruby "3.3.0"
 gem "active_storage_validations"
 gem "bootsnap", require: false
 gem "importmap-rails"
+gem "inline_svg", "~> 1.9"
 gem "jbuilder"
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.8", ">= 7.0.8.4"
