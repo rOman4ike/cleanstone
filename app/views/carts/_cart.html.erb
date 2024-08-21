@@ -1,38 +1,7 @@
 <%= turbo_frame_tag @cart do %>
   <% @cart.cart_items.each do |cart_item| %>
-    <% product = cart_item.product %>
-    <%= turbo_frame_tag product do %>
-      <li
-        class="relative flex flex-col items-center justify-between gap-3 border-b border-light-gray-300 py-3
-          first:border-t-0
-          sm:flex-row sm:gap-10
-        "
-      >
-        <div class="w-full flex grow items-center justify-start gap-4 sm:max-w-[400px]">
-          <%= image_tag url_for(product.image), class: "max-w-[100px]" %>
-          <h5>
-            <%= product.name %>
-          </h5>
-        </div>
-        <div class="flex w-full items-center justify-between">
-          <%= render cart_item, cart: @cart %>
-          <div class="flex items-center gap-2 sm:gap-0">
-            <h4 class="font-semibold">
-              <%= turbo_frame_tag "cart_item_#{cart_item.id}_total_price" do %>
-                <%= number_to_RU_currency(cart_item.total_price) %>
-              <% end %>
-            </h4>
-            <%= link_to polymorphic_path([@cart, cart_item]),
-              data: {
-                'turbo-method': :delete,
-                'turbo_confirm': 'Вы действительно хотите удалить товар?'
-              } do %>
-              <%= inline_svg_tag 'trash',
-                class: 'sm:absolute sm:right-0 sm:top-3 [&>path]:transition-colors [&>path]:hover:fill-light-gray-500' %>
-            <% end %>
-          </div>
-        </div>
-      </li>
+    <%= turbo_frame_tag cart_item do %>
+      <%= render 'cart_items/cart_item', cart: @cart, cart_item: cart_item %>
     <% end %>
   <% end %>
 <% end %>

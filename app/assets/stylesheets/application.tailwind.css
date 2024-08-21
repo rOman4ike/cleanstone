@@ -31,6 +31,10 @@
     font-family: "OpenSans", system-ui, sans-serif;
   }
 
+  turbo-frame, turbo-stream {
+    display: contents;
+  }
+
   h1 {
     font-size: 28px;
     line-height: 40px;

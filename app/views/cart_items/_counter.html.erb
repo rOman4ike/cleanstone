@@ -1,0 +1,17 @@
+<div class="flex">
+  <%= link_to cart_cart_item_path(cart, cart_item, increment_value: -1),
+    class: 'rounded-md rounded-r-none bg-light-gray-100 p-1 transition-colors hover:bg-gray-300',
+    'data-turbo-method': :patch do
+  %>
+    <%= inline_svg_tag 'minus' %>
+  <% end %>
+  <h4 class="min-h-8 min-w-8 bg-light-gray-100 p-1 text-center font-bold">
+    <%= cart_item.quantity %>
+  </h4>
+  <%= link_to cart_cart_item_path(cart, cart_item, increment_value: 1),
+    class: 'rounded-md rounded-l-none bg-light-gray-100 p-1 transition-colors hover:bg-gray-300',
+    'data-turbo-method': :patch do
+  %>
+    <%= inline_svg_tag 'plus' %>
+  <% end %>
+</div>
