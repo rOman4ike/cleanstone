@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.3.0"
 
-gem "active_storage_validations"
 gem "bootsnap", require: false
 gem "importmap-rails"
 gem "inline_svg", "~> 1.9"
