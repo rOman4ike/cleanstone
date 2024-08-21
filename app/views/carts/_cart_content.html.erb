@@ -17,7 +17,7 @@
     <% end %>
   </header>
 
-  <% if @cart.cart_items.blank? %>
+  <% if cart.cart_items.blank? %>
     <div class="py-20">
       <%= inline_svg_tag 'cart-empty', class: 'mx-auto mb-6' %>
       <div class="text-center">
@@ -31,11 +31,7 @@
     </div>
   <% end %>
 
-  <%= turbo_frame_tag @cart do %>
-    <%= render @cart %>
-  <% end %>
-
-  <%= turbo_frame_tag 'cart_info' do %>
-    <%= render 'carts/cart_info', cart: cart %>
+  <%= turbo_frame_tag 'cart_body' do %>
+    <%= render 'carts/cart_body', cart: cart %>
   <% end %>
 </div>

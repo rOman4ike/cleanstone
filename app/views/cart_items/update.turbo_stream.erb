@@ -3,10 +3,7 @@
     <%= render 'carts/cart_content', cart: @cart %>
   <% end %>
 <% else %>
-  <%= turbo_stream.update @cart do %>
-    <%= render 'carts/cart', cart: @cart %>
-  <% end %>
-  <%= turbo_stream.update 'cart_info' do %>
-    <%= render 'carts/cart_info', cart: @cart %>
+  <%= turbo_stream.update 'cart_body' do %>
+    <%= render 'carts/cart_body', cart: @cart %>
   <% end %>
 <% end %>

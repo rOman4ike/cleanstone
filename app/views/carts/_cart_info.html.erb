@@ -23,6 +23,7 @@
       </ul>
       <div class="mb-3 py-4">
         <input
+          class="input-thumb transition-colors block w-full h-1 bg-primary-500 rounded appearance-none cursor-pointer"
           data-controller="discount"
           data-action="discount#onChangeWithoutRequest mouseup->discount#onChange touchend->discount#onChange"
           data-cart-id="<%= cart.id %>"
@@ -31,7 +32,6 @@
           min="0"
           max="1000"
           value="<%= cart.discount %>"
-          class="input-thumb transition-colors block w-full h-1 bg-primary-500 rounded appearance-none cursor-pointer"
         >
       </div>
       <hr class="mb-3">
