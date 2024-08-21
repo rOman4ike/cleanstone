@@ -1,25 +1,19 @@
 <div class="w-full mb-20">
-  <%= render 'cart_header', cart: @cart %>
-  <%= render @cart %>
-  <%= render 'cart_info', cart: @cart %>
+  <%= turbo_frame_tag 'cart_header' do %>
+    <%= render 'cart_header', cart: @cart %>
+  <% end %>
 
-  <button class="min-w-full rounded-lg bg-primary-500 py-2.5 transition-colors hover:bg-primary-700">
-    <h5 class="font-semibold text-white">
-      Оформить
-    </h5>
-  </button>
+  <%= turbo_frame_tag 'empty_state' do %>
+    <% if @cart.cart_items.blank? %>
+      <%= render 'empty_state' %>
+    <% end %>
+  <% end %>
 
-  <% if false %>
-    <div class="py-20">
-      <%= inline_svg_tag 'cart-empty', class: 'mx-auto mb-6' %>
-      <div class="text-center">
-        <h2 class="font-semibold mb-2">
-          В корзине нет товаров
-        </h2>
-        <h5>
-          Добавьте товар из каталога.
-        </h5>
-      </div>
-    </div>
+  <%= turbo_frame_tag @cart do %>
+    <%= render @cart %>
+  <% end %>
+
+  <%= turbo_frame_tag 'cart_info' do %>
+    <%= render 'cart_info', cart: @cart %>
   <% end %>
 </div>

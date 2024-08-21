@@ -1,15 +1,28 @@
-<% if @cart_item.destroyed? %>
-  <%= turbo_stream.remove @cart_item %>
-<% else %>
-  <%= turbo_stream.update "cart_item_#{@cart_item.id}_counter" do %>
-    <%= render 'cart_items/counter', cart_item: @cart_item, cart: @cart %>
+<% if @cart.cart_items.blank? %>
+  <%= turbo_stream.update 'cart_header' do %>
+    <%= render 'carts/cart_header', cart: @cart %>
   <% end %>
-<% end %>
-
-<%= turbo_stream.update "cart_item_#{@cart_item.id}_total_price" do %>
-  <%= number_to_RU_currency(@cart_item.total_price) %>
-<% end %>
-
-<%= turbo_stream.replace 'cart_info' do %>
-  <%= render 'carts/cart_info', cart: @cart %>
+  <%= turbo_stream.update @cart %>
+  <% if @cart.cart_items.blank? %>
+    <%= turbo_stream.update 'empty_state' do %>
+      <%= render "carts/empty_state" %>
+    <% end %>
+  <% end %>
+  <%= turbo_stream.update 'cart_info' do %>
+    <%= render 'carts/cart_info', cart: @cart %>
+  <% end %>
+<% else %>
+  <% if @cart_item.destroyed? %>
+    <%= turbo_stream.remove @cart_item %>
+  <% else %>
+    <%= turbo_stream.update "cart_item_#{@cart_item.id}_counter" do %>
+      <%= render 'cart_items/counter', cart_item: @cart_item, cart: @cart %>
+    <% end %>
+  <% end %>
+  <%= turbo_stream.update "cart_item_#{@cart_item.id}_total_price" do %>
+    <%= number_to_RU_currency(@cart_item.total_price) %>
+  <% end %>
+  <%= turbo_stream.update 'cart_info' do %>
+    <%= render 'carts/cart_info', cart: @cart %>
+  <% end %>
 <% end %>

@@ -1,5 +1,5 @@
-<ul class="mb-8">
-  <%= turbo_frame_tag "cart_info" do %>
+<% if cart.cart_items.present? %>
+  <ul class="mb-8">
     <div class="mb-8 rounded-lg border p-4">
       <ul class="mb-3">
         <li class="mb-1 flex flex-col gap-2 py-1 last:mb-0 sm:flex-row sm:justify-between">
@@ -48,5 +48,15 @@
         </h2>
       </div>
     </div>
+  </ul>
+  <%= link_to destroy_all_cart_cart_items_path(cart),
+    class: "block text-center rounded-lg bg-primary-500 py-2.5 transition-colors hover:bg-primary-700",
+    data: {
+      'turbo-method': :delete,
+      'turbo_frame': dom_id(cart)
+    } do %>
+    <h5 class="font-semibold text-white">
+      Оформить
+    </h5>
   <% end %>
-</ul>
+<% end %>

@@ -2,15 +2,17 @@
   <h1 class="grow font-semibold">
     Корзина
   </h1>
-  <div>
-    <span>
-      <%= link_to 'Очистить корзину', destroy_all_cart_cart_items_path(cart),
-        class: 'transition-colors hover:text-dark-gray-900',
-        data: {
-          'turbo-method': :delete,
-          'turbo_confirm': 'Вы действительно хотите очистить корзину?',
-          'turbo_frame': dom_id(cart)
-        } %>
-    </span>
-  </div>
+  <% if cart.cart_items.present? %>
+    <div>
+      <span>
+        <%= link_to 'Очистить корзину', destroy_all_cart_cart_items_path(cart),
+          class: 'transition-colors hover:text-dark-gray-900',
+          data: {
+            'turbo-method': :delete,
+            'turbo_confirm': 'Вы действительно хотите очистить корзину?',
+            'turbo_frame': dom_id(cart)
+          } %>
+      </span>
+    </div>
+  <% end %>
 </header>
