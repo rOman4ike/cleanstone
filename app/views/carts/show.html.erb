@@ -1,0 +1,25 @@
+<div class="w-full mb-20">
+  <%= render 'cart_header', cart: @cart %>
+  <%= render @cart %>
+  <%= render 'cart_info', cart: @cart %>
+
+  <button class="min-w-full rounded-lg bg-primary-500 py-2.5 transition-colors hover:bg-primary-700">
+    <h5 class="font-semibold text-white">
+      Оформить
+    </h5>
+  </button>
+
+  <% if false %>
+    <div class="py-20">
+      <%= inline_svg_tag 'cart-empty', class: 'mx-auto mb-6' %>
+      <div class="text-center">
+        <h2 class="font-semibold mb-2">
+          В корзине нет товаров
+        </h2>
+        <h5>
+          Добавьте товар из каталога.
+        </h5>
+      </div>
+    </div>
+  <% end %>
+</div>

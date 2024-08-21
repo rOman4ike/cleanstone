@@ -1,0 +1,16 @@
+<% if @cart_item.destroyed? %>
+  <%= turbo_stream.remove @cart_item.product %>
+<% else %>
+  <%# TODO: в чем разница между replace и update? %>
+  <%# TODO: избавиться от refresh %>
+  <%= turbo_stream.replace @cart_item do %>
+    <%= render @cart_item, cart: @cart %>
+  <% end %>
+  <%# TODO: избавиться от этого  %>
+  <%= turbo_stream.update "cart_item_#{@cart_item.id}_total_price" do %>
+    <%= number_to_RU_currency(@cart_item.total_price) %>
+  <% end %>
+  <%= turbo_stream.replace 'cart_info' do %>
+    <%= render 'carts/cart_info', cart: @cart %>
+  <% end %>
+<% end %>

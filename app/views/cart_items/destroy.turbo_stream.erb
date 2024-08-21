@@ -1,0 +1,4 @@
+<%= turbo_stream.remove @cart_item.product %>
+<%= turbo_stream.replace 'cart_info' do %>
+  <%= render 'carts/cart_info', cart: @cart %>
+<% end %>

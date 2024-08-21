@@ -4,14 +4,20 @@ class CartItem < ApplicationRecord
 
   after_update :check_quantity
 
+  def total_price
+    product.price * quantity
+  end
+
   private
 
   def check_quantity
-    if quantity == 0
+    if quantity <= 0
       self.destroy
     end
   end
 end
+
+# TODO: переименовать quantity в count
 
 # == Schema Information
 #

@@ -1,0 +1,33 @@
+<ul class="mb-8">
+  <%= turbo_frame_tag "cart_info" do %>
+    <div class="mb-8 rounded-lg border p-4">
+      <ul class="mb-3">
+        <li class="mb-1 flex flex-col gap-2 py-1 last:mb-0 sm:flex-row sm:justify-between">
+          <small>
+            <%= cart.total_cart_items %> товара на сумму
+          </small>
+          <h4 class="font-semibold">
+            <%= number_to_RU_currency(cart.total_price) %>
+          </h4>
+        </li>
+        <li class="mb-1 flex flex-col gap-2 py-1 last:mb-0 sm:flex-row sm:justify-between">
+          <small>
+            Передвигая слайдер, укажите сумму скидки
+          </small>
+          <h4 class="font-semibold text-primary-500 js-discount--value">
+            <%= number_to_RU_currency(cart.discount) %>
+          </h4>
+        </li>
+      </ul>
+      <hr class="mb-3">
+      <div class="flex items-center justify-between">
+        <p class="font-semibold">
+          Сумма заказа
+        </p>
+        <h2 class="font-bold js-discount--final-price">
+          <%= number_to_RU_currency(cart.total_price_with_discount) %>
+        </h2>
+      </div>
+    </div>
+  <% end %>
+</ul>
