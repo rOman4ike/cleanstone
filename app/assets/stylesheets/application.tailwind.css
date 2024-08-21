@@ -75,19 +75,4 @@
     line-height: 16px;
     color: theme('colors.dark.gray.800');
   }
-
-  /* TODO: избавиться от этого */
-  input[type=range]::-webkit-slider-thumb {
-    pointer-events: all;
-    width: 38px;
-    height: 38px;
-    border-radius: 9999px;
-    background-color: theme('colors.primary.500');
-    transition: 0.3s all;
-    -webkit-appearance: none;
-  }
-
-  input[type=range]::-webkit-slider-thumb:hover {
-    background-color: theme('colors.primary.700');
-  }
 }

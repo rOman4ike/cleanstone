@@ -17,8 +17,6 @@ class CartItem < ApplicationRecord
   end
 end
 
-# TODO: переименовать quantity в count
-
 # == Schema Information
 #
 # Table name: cart_items
