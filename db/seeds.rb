@@ -1,4 +1,4 @@
-cart = Cart.create()
+cart = Cart.create(discount: 400)
 
 products = Product.create([
   {
