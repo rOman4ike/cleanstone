@@ -201,6 +201,8 @@ GEM
     rexml (3.3.5)
       strscan
     rubyzip (2.3.2)
+    russian (0.6.0)
+      i18n (>= 0.5.0)
     selenium-webdriver (4.23.0)
       base64 (~> 0.2)
       logger (~> 1.4)
@@ -277,6 +279,8 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.8, >= 7.0.8.4)
   redis (~> 4.0)
+  requestjs-rails
+  russian
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
