@@ -1,6 +1,6 @@
 <% if @cart.cart_items.blank? %>
-  <%= turbo_stream.update 'cart_content' do %>
-    <%= render 'carts/cart_content', cart: @cart %>
+  <%= turbo_stream.update 'cart_page' do %>
+    <%= render 'carts/cart_page', cart: @cart %>
   <% end %>
 <% else %>
   <%= turbo_stream.update 'cart_body' do %>

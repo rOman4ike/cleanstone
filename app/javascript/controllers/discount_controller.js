@@ -23,7 +23,7 @@ export default class extends ApplicationController {
     }).format(value)
   }
 
-  async #sendRequest(params, discountValue) {
+  async #updateDiscountForCart(params, discountValue) {
     try {
       const request = new FetchRequest('patch', `/carts/${this.cartId}`, { body: params })
       const response = await request.perform()
@@ -48,6 +48,6 @@ export default class extends ApplicationController {
         discount: discountValue
       }
     })
-    this.#sendRequest(params, discountValue)
+    this.#updateDiscountForCart(params, discountValue)
   }
 }
