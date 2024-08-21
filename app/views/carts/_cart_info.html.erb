@@ -19,6 +19,19 @@
           </h4>
         </li>
       </ul>
+      <div class="mb-3 py-4">
+        <input
+          data-controller="discount"
+          data-action="mouseup->discount#onChange touchend->discount#onChange"
+          data-cart-id="<%= cart.id %>"
+          data-total-price="<%= cart.total_price %>"
+          type="range"
+          min="0"
+          max="1000"
+          value="<%= cart.discount %>"
+          class="block w-full h-1 bg-primary-500 rounded appearance-none cursor-pointer"
+        >
+      </div>
       <hr class="mb-3">
       <div class="flex items-center justify-between">
         <p class="font-semibold">
