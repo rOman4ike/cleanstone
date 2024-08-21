@@ -1,6 +1,6 @@
 class CartItemsController < ApplicationController
   before_action :set_cart_item, only: %i[ update destroy ]
-  before_action :set_cart, only: %i[ update destroy ]
+  before_action :set_cart, only: %i[ update destroy destroy_all ]
 
   def update
     @cart_item.increment(:quantity, params[:increment_value].to_i)
@@ -23,7 +23,7 @@ class CartItemsController < ApplicationController
   end
 
   def destroy_all
-    Cart.find(params[:cart_id]).cart_items.destroy_all
+    @cart.cart_items.destroy_all
     respond_to do |format|
       format.html { redirect_to cart_items_url, notice: "Cart items was successfully destroyed." }
       format.turbo_stream
