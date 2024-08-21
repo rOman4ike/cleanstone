@@ -14,12 +14,6 @@
 bundle install
 ```
 
-Установите tailwind-окружение
-
-```
-rails tailwindcss:install
-```
-
 ## Запуск
 
 Создайте базу данных
@@ -33,4 +27,10 @@ rails db:migrate
 
 ```
 rails db:seed
+```
+
+Запустите приложения командой:
+
+```
+bin/dev
 ```
