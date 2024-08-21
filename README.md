@@ -1,24 +1,36 @@
-# README
+# CLEANSTONE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Тестовое задание мини-приложение со страницей корзины покупок для интернет-магазина [cсылка на дизайн](https://www.figma.com/file/7WlRpc5VxNpkgtusKxHgbM/CLEANSTON-Rails-challenge?type=design&node-id=0%3A1&mode=design&t=jZmlNKueZZ2mKE6a-1)
 
-Things you may want to cover:
+## ER-диаграмма
 
-* Ruby version
+<img src="./ERD.drawio.png">
 
-* System dependencies
+## Установка
 
-* Configuration
+Установите гемы
 
-* Database creation
+```
+bundle install
+```
 
-* Database initialization
+Установите tailwind-окружение
 
-* How to run the test suite
+```
+rails tailwindcss:install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Запуск
 
-* Deployment instructions
+Создайте базу данных
 
-* ...
+```
+rails db:create
+rails db:migrate
+```
+
+Заполните базу данных тестовыми данными:
+
+```
+rails db:seed
+```
