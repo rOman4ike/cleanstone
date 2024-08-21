@@ -9,6 +9,12 @@ export default class extends ApplicationController {
     this.$finalPriceBlock = document.querySelector('.js-discount--final-price')
   }
 
+  #changeBlocksValue(discountValue) {
+    const finalPrice = Math.max(this.totalPrice - discountValue, 0)
+    this.$discountBlock.innerHTML = this.#numberToRUCurrency(discountValue)
+    this.$finalPriceBlock.innerHTML = this.#numberToRUCurrency(finalPrice)
+  }
+
   #numberToRUCurrency(value) {
     return Intl.NumberFormat('ru-RU', {
       style: 'currency',
@@ -18,13 +24,21 @@ export default class extends ApplicationController {
   }
 
   async #sendRequest(params, discountValue) {
-    const request = new FetchRequest('patch', `/carts/${this.cartId}`, { body: params })
-    const response = await request.perform()
-    if (response.ok) {
-      const finalPrice = Math.max(this.totalPrice - discountValue, 0)
-      this.$discountBlock.innerHTML = this.#numberToRUCurrency(discountValue)
-      this.$finalPriceBlock.innerHTML = this.#numberToRUCurrency(finalPrice)
+    try {
+      const request = new FetchRequest('patch', `/carts/${this.cartId}`, { body: params })
+      const response = await request.perform()
+      if (response.ok) {
+        this.#changeBlocksValue(discountValue)
+      }
+      return response
+    } catch(error) {
+      console.warn(error)
     }
+  }
+
+  onChangeWithoutRequest(event) {
+    const discountValue = event.target.value
+    this.#changeBlocksValue(discountValue)
   }
 
   onChange(event) {

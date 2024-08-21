@@ -24,7 +24,7 @@
       <div class="mb-3 py-4">
         <input
           data-controller="discount"
-          data-action="mouseup->discount#onChange touchend->discount#onChange"
+          data-action="discount#onChangeWithoutRequest mouseup->discount#onChange touchend->discount#onChange"
           data-cart-id="<%= cart.id %>"
           data-total-price="<%= cart.total_price %>"
           type="range"
@@ -53,7 +53,6 @@
     class: "block text-center rounded-lg bg-primary-500 py-2.5 transition-colors hover:bg-primary-700",
     data: {
       'turbo-method': :delete,
-      'turbo_frame': dom_id(cart)
     } do %>
     <h5 class="font-semibold text-white">
       Оформить

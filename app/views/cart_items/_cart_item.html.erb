@@ -1,6 +1,7 @@
 <% product = cart_item.product %>
 <li
-  class="relative flex flex-col items-center justify-between gap-3 border-b border-light-gray-300 py-3
+  class="
+    relative flex flex-col items-center justify-between gap-3 border-b border-light-gray-300 py-3
     first:border-t-0
     sm:flex-row sm:gap-10
   "
@@ -12,14 +13,26 @@
     </h5>
   </div>
   <div class="flex w-full items-center justify-between">
-    <%= turbo_frame_tag "cart_item_#{cart_item.id}_counter" do %>
-      <%= render 'cart_items/counter', cart_item: cart_item, cart: cart %>
-    <% end %>
+    <div class="flex">
+      <%= link_to cart_cart_item_path(cart, cart_item, increment_value: -1),
+        class: 'rounded-md rounded-r-none bg-light-gray-100 p-1 transition-colors hover:bg-gray-300',
+        'data-turbo-method': :patch do
+      %>
+        <%= inline_svg_tag 'minus' %>
+      <% end %>
+      <h4 class="min-h-8 min-w-8 bg-light-gray-100 p-1 text-center font-bold">
+        <%= cart_item.quantity %>
+      </h4>
+      <%= link_to cart_cart_item_path(cart, cart_item, increment_value: 1),
+        class: 'rounded-md rounded-l-none bg-light-gray-100 p-1 transition-colors hover:bg-gray-300',
+        'data-turbo-method': :patch do
+      %>
+        <%= inline_svg_tag 'plus' %>
+      <% end %>
+    </div>
     <div class="flex items-center gap-2 sm:gap-0">
       <h4 class="font-semibold">
-        <%= turbo_frame_tag "cart_item_#{cart_item.id}_total_price" do %>
-          <%= number_to_RU_currency(cart_item.total_price) %>
-        <% end %>
+        <%= number_to_RU_currency(cart_item.total_price) %>
       </h4>
       <%= link_to polymorphic_path([cart, cart_item]),
         data: {

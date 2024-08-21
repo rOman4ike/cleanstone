@@ -6,9 +6,9 @@ class CartsController < ApplicationController
 
   def update
     if @cart.update(cart_params)
-      render status: :ok
+      render json: {}, status: :ok
     else
-      render status: :unprocessable_entity
+      render json: {}, status: :unprocessable_entity
     end
   end
 

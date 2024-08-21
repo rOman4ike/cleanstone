@@ -6,7 +6,6 @@ class CartItemsController < ApplicationController
     @cart_item.increment(:quantity, params[:increment_value].to_i)
     respond_to do |format|
       if @cart_item.save
-        format.html { redirect_to cart_url(@cart_item), notice: "Cart item was successfully updated." }
         format.turbo_stream
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -17,7 +16,6 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_item.destroy
     respond_to do |format|
-      format.html { redirect_to cart_items_url, notice: "Cart item was successfully destroyed." }
       format.turbo_stream
     end
   end
@@ -25,7 +23,6 @@ class CartItemsController < ApplicationController
   def destroy_all
     @cart.cart_items.destroy_all
     respond_to do |format|
-      format.html { redirect_to cart_items_url, notice: "Cart items was successfully destroyed." }
       format.turbo_stream
     end
   end

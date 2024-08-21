@@ -1,15 +1,3 @@
-<%= turbo_stream.update 'cart_header' do %>
-  <%= render 'carts/cart_header', cart: @cart %>
-<% end %>
-
-<%= turbo_stream.update @cart %>
-
-<% if @cart.cart_items.blank? %>
-  <%= turbo_stream.update 'empty_state' do %>
-    <%= render "carts/empty_state" %>
-  <% end %>
-<% end %>
-
-<%= turbo_stream.update 'cart_info' do %>
-  <%= render 'carts/cart_info', cart: @cart %>
+<%= turbo_stream.update 'cart_content' do %>
+  <%= render 'carts/cart_content', cart: @cart %>
 <% end %>
