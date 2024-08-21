@@ -52,12 +52,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_19_180415) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "discount", default: 0.0
+    t.integer "discount", default: 0
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.float "price"
+    t.string "name", null: false
+    t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
