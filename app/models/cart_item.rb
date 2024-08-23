@@ -11,9 +11,7 @@ class CartItem < ApplicationRecord
   private
 
   def check_quantity
-    if quantity <= 0
-      self.destroy
-    end
+    self.destroy if quantity <= 0
   end
 end
 

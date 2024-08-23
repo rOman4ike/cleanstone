@@ -15,7 +15,7 @@ class Cart < ApplicationRecord
   end
 
   def total_price_with_discount
-    total_price - discount < 0 ? 0 : total_price - discount
+    [total_price - discount, 0].max()
   end
 end
 
