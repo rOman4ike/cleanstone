@@ -2,17 +2,20 @@ import ApplicationController from "./application_controller"
 import { FetchRequest } from '@rails/request.js'
 
 export default class extends ApplicationController {
-  connect() {
-    this.cartId = this.element.dataset.cartId
-    this.totalPrice = this.element.dataset.totalPrice
-    this.$discountBlock = document.querySelector('.js-discount--value')
-    this.$finalPriceBlock = document.querySelector('.js-discount--final-price')
+  static values = {
+    cartId: Number,
+    totalPrice: Number
   }
 
+  static targets = [
+    'discount',
+    'totalPriceWithDiscount',
+  ]
+
   #changeBlocksValue(discountValue) {
-    const finalPrice = Math.max(this.totalPrice - discountValue, 0)
-    this.$discountBlock.innerHTML = this.#numberToRUCurrency(discountValue)
-    this.$finalPriceBlock.innerHTML = this.#numberToRUCurrency(finalPrice)
+    const finalPrice = Math.max(this.totalPriceValue - discountValue, 0)
+    this.discountTarget.innerHTML = this.#numberToRUCurrency(discountValue)
+    this.totalPriceWithDiscountTarget.innerHTML = this.#numberToRUCurrency(finalPrice)
   }
 
   #numberToRUCurrency(value) {
@@ -25,7 +28,7 @@ export default class extends ApplicationController {
 
   async #updateDiscountForCart(params, discountValue) {
     try {
-      const request = new FetchRequest('patch', `/carts/${this.cartId}`, { body: params })
+      const request = new FetchRequest('patch', `/carts/${this.cartIdValue}`, { body: params })
       const response = await request.perform()
       if (response.ok) {
         this.#changeBlocksValue(discountValue)
