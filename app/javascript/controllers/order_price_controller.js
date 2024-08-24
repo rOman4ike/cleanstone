@@ -12,6 +12,21 @@ export default class extends ApplicationController {
     'totalPriceWithDiscount',
   ]
 
+  onChangeWithoutRequest(event) {
+    const discountValue = event.target.value
+    this.#changeBlocksValue(discountValue)
+  }
+
+  onChange(event) {
+    const discountValue = event.target.value
+    const params = JSON.stringify({
+      cart: {
+        discount: discountValue
+      }
+    })
+    this.#updateDiscountForCart(params, discountValue)
+  }
+
   #changeBlocksValue(discountValue) {
     const finalPrice = Math.max(this.totalPriceValue - discountValue, 0)
     this.discountTarget.innerHTML = this.#numberToRUCurrency(discountValue)
@@ -37,20 +52,5 @@ export default class extends ApplicationController {
     } catch(error) {
       console.warn(error)
     }
-  }
-
-  onChangeWithoutRequest(event) {
-    const discountValue = event.target.value
-    this.#changeBlocksValue(discountValue)
-  }
-
-  onChange(event) {
-    const discountValue = event.target.value
-    const params = JSON.stringify({
-      cart: {
-        discount: discountValue
-      }
-    })
-    this.#updateDiscountForCart(params, discountValue)
   }
 }
